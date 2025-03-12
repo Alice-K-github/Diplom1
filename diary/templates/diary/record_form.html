@@ -1,0 +1,16 @@
+<!-- post_form.html -->
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5" style="background-image: linear-gradient(to left, #D2691E, #F4A460); padding-bottom: 10px">
+        <h1 class="mb-4" style="padding-top: 20px">Создание записи</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);">Сохранить</button>
+            <a href="{% url 'diary:record_list' %}" class="p-2 btn btn-warning"
+               style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);">Отмена</a>
+        </form>
+    </div>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

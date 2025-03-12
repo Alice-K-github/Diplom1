@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="brd" style="padding-bottom: 10px;">
+        <div class="card" style="background-image: linear-gradient(to bottom, #F4A460, #FFA07A);">
+          <div class="card-body" style="height: 2rem;">
+              <h3><strong>{{object.title}}</strong></h3>
+          </div>
+          <div class="card-body" style="height: 2rem;">
+              <h4>{{object.content}}</h4>
+          </div>
+          <div class="card-body" style="height: 2rem;">
+              <h6><strong >Создано:</strong> {{object.created_at}}</h6>
+          </div>
+          <div class="card-body" style="height: 2rem;">
+              <h6><strong >Дата последнего изменения:</strong> {{object.updated_at}}</h6>
+          </div>
+          <div class="card-body">
+              <div class="btn-group">
+                  <form action="#">
+                  <a class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);"
+                        href="{% url 'diary:record_update' record.pk %}">Редактировать</a>
+                  </form>
+                  <form action="#">
+                  <a class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);"
+                        href="{% url 'diary:record_delete' record.pk %}">Удалить</a>
+                  </form>
+                  <form action="#">
+                  <a class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);"
+                        href="{% url 'diary:record_list' %}">Назад к списку записей</a>
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

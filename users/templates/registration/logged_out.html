@@ -1,0 +1,11 @@
+<!-- registration/logged_out.html -->
+{% extends "home.html" %}
+
+{% block content %}
+  <h2>Выход</h2>
+  <form action="{% url 'users:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Выйти</button>
+</form>
+{% endblock %}
+

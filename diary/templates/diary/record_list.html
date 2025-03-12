@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container" style="margin-bottom: 100px; background-color: #FAEBD7; padding: 20px">
+    <h2>Список ваших записей:</h2>
+  {% for record in object_list %}
+    <div class="brd" style="padding-bottom: 10px;">
+        <div class="card" style="background-image: linear-gradient(to bottom, #F4A460, #FFA07A);">
+          <div class="card-body" style="height: 2rem;">
+              <h4><strong >{{record.title}}</strong></h4>
+          </div>
+            <div class="card-body" style="height: 2rem;">
+              <h4><strong >Создано:</strong> {{record.created_at}}</h4>
+          </div>
+          <div class="card-body">
+              <div class="btn-group">
+                  <form action="#">
+                  <a class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);"
+                        href="{% url 'diary:record_detail' record.pk%}">Открыть</a>
+                  </form>
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
