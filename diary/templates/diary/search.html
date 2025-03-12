@@ -1,0 +1,18 @@
+
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-4" style="padding-top: 20px"><strong>Результаты запроса</strong> "{{query}}":</h2>
+    {% if records %}
+      {% for record in records %}
+        <div class="card" style="background-image: linear-gradient(to bottom, #F4A460, #FFA07A); padding: 20px">
+          <h1><a href="{% url 'diary:record_detail' record.pk %}" style="color:#000000;">{{record.title}}</a></h1>
+          <h3><a>{{record.content}}</a></h3>
+        </div>
+      {% endfor %}
+    {% else %}
+        <h3><a>Результаты не найдены.</a></h3>
+    {% endif %}
+</div>
+{% endblock %}
