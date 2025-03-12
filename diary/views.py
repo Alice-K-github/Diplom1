@@ -6,7 +6,6 @@ from diary.forms import RecordForm
 from diary.models import Record
 
 
-
 def home(request):
     return render(request, 'home.html')
 
@@ -63,16 +62,23 @@ class RecordDeleteView(DeleteView):
     template_name = 'diary/record_delete.html' # шаблон
     success_url = reverse_lazy('diary:record_list') # Перенаправляет на список продуктов после удаления продукта
 
-from django.db.models import Q
 
 def search(request):
     query = request.GET.get('query')
-    print(query)
-    records = Record.objects.filter(Q(title=query) | Q(content=query))
-    print(records)
+    all_records = Record.objects.all()
+    records = []
+    for record in all_records:
+        if query in record.title or record.content:
+            records.append(Record.objects.get(pk=record.pk))
+            print(f'query:{query}')
+            print(f'Record.objects.get:{Record.objects.get(pk=record.pk)}')
+            print(f'record.title:{record.title}')
+            print(f'record.content:{record.content}')
+            print(f'records:{records}')
+        else:
+            pass
     context = {
         'query': query,
         'records': records
     }
-    print(context)
     return render(request, 'diary/search.html', context)
