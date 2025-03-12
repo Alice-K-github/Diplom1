@@ -1,5 +1,6 @@
 {% load static %}
 <nav class="ms-5">
+    {% if user.is_authenticated %}
     <a>
     <form class="d-flex" action="{% url 'diary:search' %}" role="search" method="get">
         {% csrf_token %}
@@ -12,4 +13,12 @@
        href="{% url 'diary:record_list' %}">Мои записи</a>
     <a class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);"
        href="{% url 'diary:record_create' %}">Создать новую запись</a>
+        <form action="{% url 'users:logout' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="p-2 btn btn-warning" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);">Выйти</button>
+        </form>
+    {% else %}
+        <a class="p-2 btn btn-warning" href="{% url 'users:login' %}" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);">Войти</a>
+        <a class="p-2 btn btn-warning" href="{% url 'users:register' %}" style="background-image: linear-gradient(to right, #FAEBD7, #FFDEAD);">Зарегистрироваться</a>
+    {% endif %}
 </nav>
