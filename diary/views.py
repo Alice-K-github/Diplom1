@@ -62,19 +62,14 @@ class RecordDeleteView(DeleteView):
     template_name = 'diary/record_delete.html' # шаблон
     success_url = reverse_lazy('diary:record_list') # Перенаправляет на список продуктов после удаления продукта
 
-
+import re
 def search(request):
     query = request.GET.get('query')
     all_records = Record.objects.all()
     records = []
     for record in all_records:
-        if query in record.title or record.content:
+        if re.search(query, record.title) or re.search(query, record.content):
             records.append(Record.objects.get(pk=record.pk))
-            print(f'query:{query}')
-            print(f'Record.objects.get:{Record.objects.get(pk=record.pk)}')
-            print(f'record.title:{record.title}')
-            print(f'record.content:{record.content}')
-            print(f'records:{records}')
         else:
             pass
     context = {
