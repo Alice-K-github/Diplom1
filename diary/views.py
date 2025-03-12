@@ -4,6 +4,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from diary.forms import RecordForm
 from diary.models import Record
+import re
 
 
 def home(request):
@@ -62,7 +63,7 @@ class RecordDeleteView(DeleteView):
     template_name = 'diary/record_delete.html' # шаблон
     success_url = reverse_lazy('diary:record_list') # Перенаправляет на список продуктов после удаления продукта
 
-import re
+
 def search(request):
     query = request.GET.get('query')
     all_records = Record.objects.all()
