@@ -6,6 +6,7 @@ from users.models import CustomUser
 # Обозначение не-пустого значения переменных
 NULLABLE = {'blank': True, 'null': True}
 
+
 class Record(models.Model):
     # Посты в приложении
     title = models.TextField(verbose_name='Заголовок', **NULLABLE)

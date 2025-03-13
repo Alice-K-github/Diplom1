@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
@@ -9,7 +9,6 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(verbose_name="Номер телефона", max_length=15, blank=True, help_text='Введите номер телефона (необязательно)')
     country = models.CharField(verbose_name='Страна', max_length=30, blank=True, help_text="Введите страну (необязательно)")
     is_staff = models.BooleanField(default=False)
-
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

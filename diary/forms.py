@@ -14,7 +14,7 @@ class RecordForm(forms.ModelForm):
         self.fields['title'].widget.attrs.update({
             'class': 'form-control',
             'placeholder': 'Введите заголовок',
-            'style':'background-color: #FAEBD7; height:50px'
+            'style': 'background-color: #FAEBD7; height:50px',
         })
 
         self.fields['content'].widget.attrs.update({

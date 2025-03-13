@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from decouple import config
 
@@ -128,3 +127,14 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = '/diary/home/'
+LOGOUT_REDIRECT_URL = '/diary/home/'
+
+AUTHENTICATION_BACKENDS = [
+         'django.contrib.auth.backends.ModelBackend',
+     ]

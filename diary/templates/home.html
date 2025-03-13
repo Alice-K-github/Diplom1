@@ -24,7 +24,11 @@
     {% block content %}
     {% endblock %}
 </div>
-
+{% if not user.is_authenticated %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" >
+    <h1>Пожалуйста, войдите или зарегистрируйтесь, чтобы пользоваться сайтом.</h1>
+</div>
+{% endif %}
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
